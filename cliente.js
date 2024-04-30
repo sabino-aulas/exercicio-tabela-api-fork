@@ -4,7 +4,7 @@ console.log("Iniciando contexto global: Página de cliente...")
 
 // Exercício 2
 // 0 - Ler todo o código e entender o que falta
-// 1 - Adicionar pontos faltantes, como click do botão de filtrar chamando iniciarFiltrarLivros
+// 1 - Adicionar pontos faltantes, como o escrever na busca chamar iniciarFiltrarLivros
 // 2 - Construir função apiLivros_BuscarTodosOsLivros
 // 3 - Construir função tela_AdicionarLivrosNaTabela
 // 4 - Construir função utilitariosVetores_filtrarVetor
