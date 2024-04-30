@@ -8,8 +8,8 @@ console.log("Iniciando contexto global: Página de cliente...")
 // 2 - Construir função apiLivros_BuscarTodosOsLivros
 // 3 - Construir função tela_AdicionarLivrosNaTabela
 // 4 - Construir função utilitariosVetores_filtrarVetor
-// 5 - Testar unitaria mente função utilitariosVetores_filtrarVetor
-// 6 - Construir função iniciarFiltrarLivros para click do botão buscar
+// 5 - Testar unitariamente a função utilitariosVetores_filtrarVetor
+// 6 - Construir função iniciarFiltrarLivros para escrita no filtro do input buscar
 // 7 - Separar funções em seus módulos (remova o que vem antes do underline _ e coloque em um arquivo com o mesmo nome)
 
 let livros = [] // Usar como memória de livros que foram buscados do servidor (API)
