@@ -14,26 +14,55 @@ console.log("Iniciando contexto global: Página de cliente...")
 
 let livros = [] // Usar como memória de livros que foram buscados do servidor (API)
 // Adicionar callback function para keyup de botão de busca
+document.getElementById("busca")
+    .addEventListener("keyup", iniciarFiltrarLivros)
 
 iniciar() // Contexto global executando função iniciar ao entrar na tela
 
 async function iniciar() {
+    console.log("-- FUNÇÃO INICIAR --")
+
     livros = await apiLivros_BuscarTodosOsLivros()
     tela_AdicionarLivrosNaTabela(livros)
 }
 
 async function apiLivros_BuscarTodosOsLivros() {
-    // return livros
+    const resposta = await fetch("https://api-aula.up.railway.app/livros")
+    const dados = await resposta.json()
+
+    return dados
 }
 
 function tela_AdicionarLivrosNaTabela(livros) {
-    // Construir tbody com os livros
+    const tbody = document.getElementById("livros")
+    
+    const linhas = construirLinhasNaTabela(livros)
+
+    tbody.innerHTML = linhas
+}
+
+function construirLinhasNaTabela(livros) {
+    let linhas = ""
+
+    livros.forEach((livro) => {
+        linhas += `
+            <tr>
+                <td>${livro.title}</td>
+                <td>${livro.description}</td>
+            </tr>
+        `
+    })
+
+    return linhas
 }
 
 function iniciarFiltrarLivros() {
-    // Buscar valor da tela
-    // filtrarLivros(livros, valorDeBusca)
-    // adicionarLivrosNaTabela(livrosFiltrados)
+    console.log(" -- FILTRANDO LIVROS -- ")
+
+    const valorDeBusca = document.getElementById("busca").value
+    const livrosFiltrados = utilitariosVetores_filtrarVetor(livros, valorDeBusca)
+
+    tela_AdicionarLivrosNaTabela(livrosFiltrados)
 }
 
 /* Testar função abaixo exemplo (
@@ -49,7 +78,12 @@ function iniciarFiltrarLivros() {
     console.log(resultado)
     // Deve retornar [{ nome: "João", idade: 20 }, { nome: "João", idade: 12 }]
 ) */
-function utilitariosVetores_filtrarVetor(listaOriginal, valorDeBusca, propriedade) {
+function utilitariosVetores_filtrarVetor(listaOriginal, valorDeBusca) {
+    const livrosFiltrados = listaOriginal.filter(
+        (livro) => livro.title.includes(valorDeBusca)
+    )
+
+    return livrosFiltrados
 }
 
 
